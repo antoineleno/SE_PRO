@@ -18,8 +18,7 @@ class SignInForm(FlaskForm):
 
 class SignUpForm(FlaskForm):
     """Sign Up form"""
-    first_name = StringField('First Name')
-    last_name = StringField('Last Name')
+    name = StringField('First Name')
     email = EmailField('Email', validators=[DataRequired(), Email()])
     phone_number = StringField('Phone Number',
                                validators=[DataRequired()])
@@ -30,7 +29,7 @@ class SignUpForm(FlaskForm):
         validators=[DataRequired(), Length(min=6),
                     EqualTo('password', message='Passwords must match')]
     )
-    user_type = StringField('User Type', validators=[DataRequired()])
+    address = StringField('address', validators=[DataRequired()])
     submit = SubmitField('Sign Up')
 
 
