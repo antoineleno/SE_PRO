@@ -12,6 +12,8 @@ class User(BaseModel, Base, UserMixin):
     __tablename__ = "user"
     name = Column(String(224), nullable=False)
     email = Column(String(224), nullable=False, unique=True)
+    address = Column(String(224), nullable=False)
+    phone_number = Column(String(224), nullable=False)
     password_hash = Column(String(1024), nullable=False)
     role = Column(String(10), nullable=False)
     profile_image = Column(String(65), nullable=False)

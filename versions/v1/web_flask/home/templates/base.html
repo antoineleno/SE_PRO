@@ -148,14 +148,25 @@
                     </div>
                     <!-- End of Profile Section -->
 
-
+                    <!-- Flash message -->
+                    {% for message in get_flashed_messages(with_categories=true) %}
+                        <div class="alert alert-dismissible fade show flash-message
+                            {% if message[0] == 'error' %} alert-danger {% else %} alert-success {% endif %}" 
+                            role="alert" id="flashMessage" 
+                            style="max-width: 600px; margin: 10px auto; text-align: center; position: fixed; top: 120px; left: 50%; transform: translateX(-50%); z-index: 9999;">
+                            <strong>{{ message[1] }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
                 </div>
             </nav>
         </div>
     </div>
 </div>
+
 <!-- Navbar End -->
 {% block content %}
+
 {% endblock %}
 
     <!-- Back to Top -->
