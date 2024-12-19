@@ -38,6 +38,13 @@ login_manager.login_view = 'app_views_auth.login_view'
 
 
 
+@app.context_processor
+def inject_user():
+    """Inject all base variables"""
+    return {
+        'sign_up_form': SignUpForm(),
+    }
+
 @login_manager.user_loader
 def load_user(id):
     """Load current user session"""

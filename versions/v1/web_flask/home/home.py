@@ -8,7 +8,7 @@ from flask import redirect, url_for, flash, request, jsonify
 from models import storage
 from models.models import User
 from home import app_views_home
-
+from auth.forms import SignInForm, SignUpForm, ForgotPasswordForm
 
 import datetime
 import os
@@ -20,4 +20,5 @@ home = Blueprint('home', __name__)
 @app_views_home.route("/")
 def home():
     """SignIn"""
-    return "This is from home"
+    form = SignUpForm()
+    return render_template('index.html', form=form)
