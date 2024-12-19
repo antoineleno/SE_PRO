@@ -35,10 +35,11 @@ def sign_up():
         my_dict = {"name": name,
                    "email": email,
                    "phone_number": phone_number,
+                   "role": "Student",
                    "password": password,
                    "address": address,
                    "profile_image": "user.avif"}
-
+    
         new_instance = User()
         for key, value in my_dict.items():
             setattr(new_instance, key, value)
@@ -46,17 +47,18 @@ def sign_up():
             new_instance.save()
             message = """Account successfully created"""
             flash(message, 'success')
-            return redirect(url_for('app_view_home.home'))
+            return redirect(url_for('app_views_home.home'))
 
         except IntegrityError as e:
+            print(e)
             storage.close()
             message = """Account not created, Email already exist"""
             flash(message, 'error')
-            return redirect(url_for('app_view_home.home'))
+            return redirect(url_for('app_views_home.home'))
     else:
         message = """An error occur while creating your accound!"""
         flash(message, 'error')
-        return redirect(url_for('app_view_home.home'))
+        return redirect(url_for('app_views_home.home'))
     
 
 @app_views_auth.route("/")
